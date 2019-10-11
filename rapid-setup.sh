@@ -53,8 +53,8 @@ if [[ "$mpath" == *\/* ]] || [[ "$mpath" == *\\* ]]
         fi
 fi
 # Write the mount configuration to fstab
-cmd="echo '//${mpath} /mnt/${dirname1} cifs domain=${DOMAIN},username=${USERNAME},password=${PASSWORD},
-sec=ntlm,noserverino,file_mode=0777,dir_mode=0777,x-systemd.automount 0 0' >> /etc/fstab"
+cmd="sudo -i echo '//${mpath} /mnt/${dirname1} cifs domain=${DOMAIN},username=${USERNAME},password=${PASSWORD},
+sec=ntlm,noserverino,file_mode=0777,dir_mode=0777,x-systemd.automount 0 0' >> /etc/fstab mount -a"
 eval $cmd
 read -p "Do you want to add another mount point? <y or n>: " prompt
 if [[ $prompt == "n" || $prompt == "N" || $prompt == "no" || $prompt == "No" ]]
