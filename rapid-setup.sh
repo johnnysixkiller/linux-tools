@@ -6,13 +6,13 @@ echo
 # Decide which ditro is running so that we can utilize the package manager and add users to the sudo privileges group.
 if [  -n "$(uname -a | grep Ubuntu)" ]; then
     PACKMAN="apt-get" 
-    GROUP="sudoers"
+    GROUP="sudo"
 else
     PACKMAN="yum"
     GROUP="wheel"
 fi 
 # Get user input to assign values to variables.
-echo "Enter your domain, without extention. (EX: DIY, not DIY.LAN): "
+echo "Enter your domain, without extention. (EX: diy, not diy.lan): "
 read DOMAIN
 echo "Enter your username: "
 read USERNAME
@@ -27,11 +27,6 @@ do
     PASSWORD+="$char"
 done
 echo
-echo "Enter a new hostname including the domain (EX: hostname.something.abc): "
-read hostname
-${PACKMAN} install cifs-utils -y
-# Set the new hostname
-hostnamectl set-hostname ${hostname}
 
 while :
 do
