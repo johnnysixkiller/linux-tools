@@ -12,7 +12,7 @@ else
     GROUP="wheel"
 fi 
 # Get user input to assign values to variables.
-echo "Enter your domain, without extention. (EX: diy, not diy.lan): "
+echo "Enter your domain, without extention. (EX: If it's DIY.LAN, use DIY, not DIY.LAN): "
 read DOMAIN
 echo "Enter your username: "
 read USERNAME
@@ -30,7 +30,8 @@ echo
 
 while :
 do
-read -p "Enter a mount directory name. DO NOT include '/mnt/' (<directory>/<subdirectory>): " mpath
+read -p "Enter a mount directory name. DO NOT include '/mnt/' or any preceeding slashes to the directory
+(EX: <directory>/<subdirectory> NOT <//directory>/<subdirectory>): " mpath
 # Check to make sure we don't send trailing forward slash to the variable string.
 if [[ "$mpath" == *\/* ]] || [[ "$mpath" == *\\* ]]
     then
@@ -47,9 +48,10 @@ if [[ "$mpath" == *\/* ]] || [[ "$mpath" == *\\* ]]
             mkdir /mnt/${mpath} /mnt/${dirname1}
         fi
 fi
-# Write the mount configuration to fstab
+# Write the mount configuration to fstab.
+# This command will be run for each directory you mount one at a time.
 cmd="sudo -i echo '//${mpath} /mnt/${dirname1} cifs domain=${DOMAIN},username=${USERNAME},password=${PASSWORD},
-vers=2.1,iocharset=utf8,noserverino,file_mode=0777,dir_mode=0777,x-systemd.automount'"
+vers=2.1,iocharset=utf8,noserverino,file_mode=0777,dir_mode=0777,x-systemd.automount' >> /etc/fstab"
 
 eval $cmd
 read -p "Do you want to add another mount point? <y or n>: " prompt
