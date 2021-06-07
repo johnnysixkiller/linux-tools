@@ -39,13 +39,13 @@ if [[ "$mpath" == *\/* ]] || [[ "$mpath" == *\\* ]]
         dirname1=`basename "$mpath"`
         if [[ -d "${mpath}" && ! -L "${mpath}" ]] ; 
         then
-            mkdir /mnt/${mpath} /mnt/${dirname1}
+            mkdir -p /mnt/${mpath} /mnt/${dirname1}
         fi
     else
         dirname1=${mpath}
         if [[ -d "${mpath}" && ! -L "${mpath}" ]] ; 
         then
-            mkdir /mnt/${mpath} /mnt/${dirname1}
+            mkdir -p /mnt/${mpath} /mnt/${dirname1}
         fi
 fi
 # Write the mount configuration to fstab.
