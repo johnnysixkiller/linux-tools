@@ -12,7 +12,7 @@ else
     GROUP="wheel"
 fi 
 # Get user input to assign values to variables.
-echo "Enter your domain, without extention. (EX: If it's DIY.LAN, use DIY, not DIY.LAN): "
+echo "Enter your domain, without extention. (EX: DIY.LAN): "
 read DOMAIN
 echo "Enter your username: "
 read USERNAME
