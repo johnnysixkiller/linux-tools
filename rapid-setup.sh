@@ -5,7 +5,7 @@ echo "****** JOHNNY'S RAPID SETUP ******"
 echo
 # Decide which ditro is running so that we can utilize the package manager and add users to the sudo privileges group.
 if [  -n "$(uname -a | grep Ubuntu)" ]; then
-    PACKMAN="apt-get" 
+    PACKMAN="apt" 
     GROUP="sudo"
 else
     PACKMAN="yum"
