@@ -51,7 +51,7 @@ fi
 # Write the mount configuration to fstab.
 # This command will be run for each directory you mount one at a time.
 cmd="sudo -i echo '//${mpath} /mnt/${dirname1} cifs domain=${DOMAIN},username=${USERNAME},password=${PASSWORD},
-vers=2.1,iocharset=utf8,noserverino,file_mode=0777,dir_mode=0777,x-systemd.automount' >> /etc/fstab"
+vers=2.1,iocharset=utf8,noserverino,file_mode=0777,dir_mode=0777,vers=1.0 0 0' >> /etc/fstab"
 
 eval $cmd
 read -p "Do you want to add another mount point? <y or n>: " prompt
