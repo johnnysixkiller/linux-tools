@@ -30,8 +30,8 @@ echo
 
 while :
 do
-read -p "Enter a mount directory name. DO NOT include '/mnt/' or any preceeding slashes to the directory
-(EX: <directory>/<subdirectory> NOT <//directory>/<subdirectory>): " mpath
+read -p "Enter a mount directory name. DO NOT include '/mnt/' or any preceeding slashes to the directory.
+(EX: Instead of '/mnt/your_directory/your_sub_directory>' You would enter 'your_directory/your_sub_directory'" mpath
 # Check to make sure we don't send trailing forward slash to the variable string.
 if [[ "$mpath" == *\/* ]] || [[ "$mpath" == *\\* ]]
     then
